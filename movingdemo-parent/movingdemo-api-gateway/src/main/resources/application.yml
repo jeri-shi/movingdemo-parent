@@ -14,11 +14,7 @@ eureka:
  
 zuul:
   routes:
-    movingdemoopenapi:
-      path: /movingdemoopenapi/**
-      url: http://localhost:8888/uaa
-
-
+    movingdemoopenapi: /movingdemoopenapi/**
   
 logging:
   level:
