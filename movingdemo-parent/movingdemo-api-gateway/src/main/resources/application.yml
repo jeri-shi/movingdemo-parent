@@ -1,0 +1,25 @@
+debug: true
+
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 5555
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:11111/eureka
+ 
+zuul:
+  routes:
+    movingdemoopenapi:
+      path: /movingdemoopenapi/**
+      url: http://localhost:8888/uaa
+
+
+  
+logging:
+  level:
+    org.springframework.security: DEBUG
