@@ -13,9 +13,14 @@ eureka:
       defaultZone: http://peer1:11111/eureka
  
 zuul:
+  addHostHeader: true
   routes:
-    movingdemoopenapi: /movingdemoopenapi/**
-  
+    uaa:
+      path: /uaa/**
+      serviceId: movingdemoopenapi
+      stripPrefix: false
+      sensitiveHeaders: 
+
 logging:
   level:
     org.springframework.security: DEBUG
