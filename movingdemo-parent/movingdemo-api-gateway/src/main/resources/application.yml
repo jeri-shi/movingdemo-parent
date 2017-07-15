@@ -21,6 +21,24 @@ zuul:
       stripPrefix: false
       sensitiveHeaders: 
 
+
+security:
+  basic:
+    enabled: false
+  sessions: never
+  oauth2:
+    sso:
+      loginPath: /uaa/login
+    client:
+      client-id: movingdemo-users
+      client-secret: users-secret
+      access-token-uri: http://localhost:8888/uaa/oauth/token
+      user-authorization-uri: http://localhost:8888/uaa/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:8888/uaa/me
+      
 logging:
   level:
     org.springframework.security: DEBUG
+    org.springframework.cloud.netflix.zuul: Debug
+    com.netflix.zuul: DEBUG
