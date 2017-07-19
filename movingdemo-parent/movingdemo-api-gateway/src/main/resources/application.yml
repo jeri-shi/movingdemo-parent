@@ -1,11 +1,13 @@
-debug: true
-
 spring:
   application:
     name: api-gateway
+  output:
+    ansi:
+      enabled: always
 
 server:
   port: 5555
+  use-forward-headers: true
   
 eureka:
   client:
@@ -14,6 +16,7 @@ eureka:
  
 zuul:
   addHostHeader: true
+  addProxyHeader: true
   routes:
     uaa:
       path: /uaa/**
@@ -21,14 +24,12 @@ zuul:
       stripPrefix: false
       sensitiveHeaders: 
 
-
 security:
   basic:
     enabled: false
   sessions: never
   oauth2:
-    sso:
-      loginPath: /uaa/login
+
     client:
       client-id: movingdemo-users
       client-secret: users-secret
@@ -36,9 +37,14 @@ security:
       user-authorization-uri: http://localhost:8888/uaa/oauth/authorize
     resource:
       user-info-uri: http://localhost:8888/uaa/me
-      
+
+Debug: true
 logging:
   level:
     org.springframework.security: DEBUG
     org.springframework.cloud.netflix.zuul: Debug
-    com.netflix.zuul: DEBUG
+    com.netflix.zuul: info
+    com.shijin.learn: trace
+    org.springframework.security.web.util: info
+    
+
