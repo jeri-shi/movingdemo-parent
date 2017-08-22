@@ -57,7 +57,7 @@ public class App extends WebSecurityConfigurerAdapter {
 //        .logoutSuccessUrl("/uaa/login?logout").permitAll()
       .and()
       .logout().permitAll()
-      .logoutSuccessUrl("/")
+      .logoutSuccessUrl("/login?logout")
       .and()
       .csrf().disable();
     
